@@ -11,6 +11,7 @@ gem 'jbuilder', '~> 1.2'
 gem 'bootstrap-sass'
 gem 'devise'
 gem 'simple_form'
+gem 'therubyracer'
 group :development do
   gem 'rails_layout'
 end
@@ -22,4 +23,5 @@ group :test do
   gem 'capybara'
   gem 'database_cleaner', '1.0.1'
   gem 'email_spec'
+  gem 'rspec'
 end
