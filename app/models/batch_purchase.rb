@@ -29,6 +29,10 @@ class BatchPurchase < ActiveRecord::Base
         end
     end
 
+    def gross_revenue
+        purchases.all.inject(0) { |sum, purchase| sum + purchase.gross_revenue }
+    end
+
     private
     
     def has_purchases

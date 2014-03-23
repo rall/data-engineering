@@ -20,4 +20,21 @@ describe BatchPurchase do
             expect { batch_purchase.save }.to change(BatchPurchase, :count).by(1)
         end
     end
+
+    describe "#gross_revenue" do
+        let(:product1) { Product.new(price: 5) }
+        let(:product2) { Product.new(price: 10) }
+
+
+        let(:purchase1) { Purchase.new(product: product1, quantity: 5) }
+        let(:purchase2) { Purchase.new(product: product2, quantity: 1) }
+        let(:purchase3) { Purchase.new(product: product1, quantity: 10) }
+
+        it "totals gross revenue from purchases" do
+            batch_purchase = BatchPurchase.new(purchases: [ purchase1, purchase2 ])
+            expect(batch_purchase.gross_revenue).to eq(35)
+            batch_purchase.purchases << purchase3
+            expect(batch_purchase.gross_revenue).to eq(85)
+        end
+    end
 end

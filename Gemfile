@@ -12,6 +12,8 @@ gem 'bootstrap-sass'
 gem 'devise'
 gem 'simple_form'
 gem 'therubyracer'
+gem 'attribute_normalizer'
+
 group :development do
   gem 'rails_layout'
 end
