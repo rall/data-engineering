@@ -8,6 +8,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     config.librarian_chef.cheffile_dir = "chef"
 
+    config.vm.network :forwarded_port, guest: 3000, host: 3000
+
     config.vm.provision :chef_solo do |chef|
         chef.cookbooks_path = "chef/cookbooks"
 
