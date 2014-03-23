@@ -41,4 +41,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
 
     config.vm.provision :shell, :inline => %q{chown -R vagrant:vagrant /home/vagrant/.rbenv}
+    config.vm.provision :shell, :inline => %q{apt-get install libsqlite3-dev}
+    # config.vm.provision :shell, :inline => %q{su -c "cd /vagrant && rbenv rehash && bundle install" vagrant}
 end
