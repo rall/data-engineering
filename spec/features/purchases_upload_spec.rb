@@ -28,13 +28,13 @@ PURCHASES
         end
 
         def upload_file
-            attach_file("batch_purchase_upload_file", file_name)
+            attach_file("batch_purchase_file", file_name)
             click_button("Upload")
         end
 
         it "can upload the sample file" do
             upload_file
-            expect(page).to have_content 'Success'
+            expect(page).to have_content 'Batch purchase was successfully created.'
         end
 
         it "it displays the result" do
