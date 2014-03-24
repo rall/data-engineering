@@ -20,13 +20,11 @@ class BatchPurchasesController < ApplicationController
         @batch_purchase.parse_line(purchase) unless first_line
         first_line = false
       end
-      respond_to do |format|
-        if @batch_purchase.save
-          format.html { redirect_to @batch_purchase, notice: 'Batch purchase was successfully created.' }
-        end
+      if @batch_purchase.save
+        redirect_to @batch_purchase, notice: 'Batch purchase was successfully created.'
+      else
+        render action: 'new'
       end
-    else
-      format.html { render action: 'new' }
     end
   end
 
