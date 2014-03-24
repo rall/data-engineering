@@ -3,7 +3,6 @@ class BatchPurchasesController < ApplicationController
   before_action :new_batch_purchase, only: [:new, :create]
 
   # GET /batch_purchases/1
-  # GET /batch_purchases/1.json
   def show
   end
 
@@ -12,9 +11,8 @@ class BatchPurchasesController < ApplicationController
   end
 
   # POST /batch_purchases
-  # POST /batch_purchases.json
   def create
-    if (params[:batch_purchase])
+    if (params[:batch_purchase] and params[:batch_purchase][:file])
       first_line = true
       IO.foreach(params[:batch_purchase][:file].tempfile) do |purchase|
         @batch_purchase.parse_line(purchase) unless first_line
@@ -23,8 +21,12 @@ class BatchPurchasesController < ApplicationController
       if @batch_purchase.save
         redirect_to @batch_purchase, notice: 'Batch purchase was successfully created.'
       else
+        flash[:notice] = "There was a problem with your file"
         render action: 'new'
       end
+    else
+      flash[:notice] = "Please choose a file to upload"
+      render action: 'new'
     end
   end
 

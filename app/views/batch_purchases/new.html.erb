@@ -1,3 +1,6 @@
+<% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+<% end %>
 <%= form_for @batch_purchase do |f| %>
     Upload file here: <%= f.file_field :file %>
     <%= f.submit "Upload" %>
