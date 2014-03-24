@@ -1,3 +1,43 @@
+# Submission for Software Engineer Challenge
+
+## Instructions to run demo:
+1. To run this demo in a VM, you will need to install Vagrant [http://www.vagrantup.com] and VirtualBox [https://www.virtualbox.org]
+
+1. You will also need to install the vagrant-librarian-chef plugin:
+    
+        vagrant plugin install vagrant-librarian-chef
+
+1. Next, start up the VM and provision dependencies
+
+        vagrant up
+        vagrant provision
+    
+1. SSH into the new VM
+
+        vagrant ssh
+    
+1. Change to the /vagrant directory and install the ruby gems needed 
+
+        cd /vagrant
+        bundle
+    
+1. Create the db and run the migration
+
+        rake db:create
+        rake db:migrate
+    
+1. Ensure the specs pass
+
+        rake spec
+    
+1. Start a server
+
+        rails s
+    
+1. Open a browser and navigate to http://localhost:3000
+
+
+
 # Challenge for Software Engineer - Big Data 
 To better assess a candidates development skills, we would like to provide the following challenge.  You have as much time as you'd like (though we ask that you not spend more than a few hours).
 
